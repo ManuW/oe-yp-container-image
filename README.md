@@ -85,7 +85,11 @@ docker run -it -rm oe-builder
 
 ```shell
 docker buildx create --name mybuilder --bootstrap --use
-docker buildx build --platform linux/amd64,linux/arm64 -t man0wee/oe-builder:latest --push .
+docker buildx build --platform linux/amd64,linux/arm64 -t man0wee/oe-builder:latest -t man0wee/oe-builder:v0.3 --push .
 ```
 
 Link [Docker Multi-Platform Build](https://docs.docker.com/build/building/multi-platform/)
+
+## VSCode
+
+If you have VSCode installed, then you can attach the container using [Docker for Visual Studio Code Extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker).
