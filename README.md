@@ -46,22 +46,33 @@ Some details about the container image
 
 ## OpenEmbedded / Yocto Project Example Usage
 
-**FIXME: FILL-ME-OUT**
-
 ```shell
+# Run container
+# - Remove after exit container
+# - Mount volume oe-workspace
 docker run -it --rm --volume oe-workspace:/home/builder/workspace man0wee/oe-builder
+
+# Clone poky (Github mirror)
 git clone https://github.com/yoctoproject/poky.git
+cd poky
+
+# Checkout latest OpenEmbedded version
 git checkout -t origin/nanbield -b my-nanbield
 git pull
-cd poky
+
+# Source and build a minimal image
 source oe-init-build-env
 bitbake core-image-minimal
-runqemu --nographic
+
+# Start QEMU without graphic and use user network
+runqemu nographic slirp
 ```
 
-Source [Use Git to Clone Poky](https://docs.yoctoproject.org/brief-yoctoprojectqs/index.html#use-git-to-clone-poky)
+Link [Use Git to Clone Poky](https://docs.yoctoproject.org/brief-yoctoprojectqs/index.html#use-git-to-clone-poky)
 
-Source [Build Your Image](https://docs.yoctoproject.org/brief-yoctoprojectqs/index.html#building-your-image)
+Link [Build Your Image](https://docs.yoctoproject.org/brief-yoctoprojectqs/index.html#building-your-image)
+
+[runqemu Command Line Info](https://docs.yoctoproject.org/dev-manual/qemu.html#qemu-command-line-syntax)
 
 ## Local Build and Run the Container Image
 
@@ -77,4 +88,4 @@ docker buildx create --name mybuilder --bootstrap --use
 docker buildx build --platform linux/amd64,linux/arm64 -t man0wee/oe-builder:latest --push .
 ```
 
-Source [Docker Multi-Platform Build](https://docs.docker.com/build/building/multi-platform/)
+Link [Docker Multi-Platform Build](https://docs.docker.com/build/building/multi-platform/)
