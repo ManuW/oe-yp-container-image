@@ -1,4 +1,4 @@
-# Conateiner Image for OpenEmbedded / Yocto Project
+# Container Image for OpenEmbedded / Yocto Project
 
 git address https://github.com/ManuW/oe-yp-container-image.git
 
